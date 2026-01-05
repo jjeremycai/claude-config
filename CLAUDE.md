@@ -11,29 +11,47 @@ Personal Claude Code plugin marketplace containing shareable skills, agents, com
 ```
 claude-toolkit/
 ├── plugins/              # MCP-based plugins (require servers)
-│   └── ashby/            # Ashby ATS integration
+│   ├── ashby/            # Ashby ATS integration
+│   └── missive/          # Missive inbox integration
 ├── agents/               # Specialized agents
 ├── commands/             # Slash commands
 ├── skills/               # Knowledge/instruction skills
 └── README.md
 ```
 
-## Plugin: Ashby
+## Plugins
 
-Full Ashby ATS integration with MCP server.
+### Ashby
 
-### Setup
+Ashby ATS integration with Python MCP server (~34 tools).
+
+**Setup:**
 ```bash
 cd plugins/ashby/mcp-server
 uv sync
 echo 'ASHBY_API_KEY=your-key' > .env
 ```
 
-### Architecture
-- `plugins/ashby/mcp-server/server.py` - Python MCP server with ~34 tools
+**Components:**
+- `plugins/ashby/mcp-server/server.py` - Python MCP server
 - `agents/ashby-recruiter.md` - Recruiting workflow agent
-- `commands/candidates.md`, `jobs.md`, `pipeline.md`, `schedule.md` - Slash commands
+- `commands/candidates.md`, `jobs.md`, `pipeline.md`, `schedule.md`
 - `skills/ashby-*/` - API and workflow guidance
+
+### Missive
+
+Missive inbox integration with TypeScript MCP server.
+
+**Setup:**
+```bash
+cd plugins/missive
+npm install
+```
+
+**Components:**
+- `plugins/missive/mcp/server.ts` - TypeScript MCP server
+- `agents/missive-draft-assistant.md` - Inbox review agent
+- `skills/contact-management/`, `draft-reply/`, `inbox-triage/`, `labeling/`, `team-assignment/`
 
 ## Adding Components
 
